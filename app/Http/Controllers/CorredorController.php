@@ -9,7 +9,9 @@ class CorredorController extends Controller
 {
     public function index()
     {
-        return Corredor::all();
+        $corredores = Corredor::all();
+
+        return response()->json($corredores);
     }
     public function create()
     {
@@ -21,17 +23,6 @@ class CorredorController extends Controller
      */
     public function store(Request $request)
     {
-        /*$corredores = Corredor::create([
-            "nome"=>$request->input("nome"),
-            "email"=>$request->input("email"),
-            "dataNascimento"=>$request->input("dataNascimento"),
-            "sexo"=>$request->input("sexo"),
-        ]);
-
-        return $corredores;
-
-    }*/
-
         //Corredor::create($request->all());
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
