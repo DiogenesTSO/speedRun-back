@@ -7,7 +7,7 @@ use App\Models\Corredor;
 
 class CorredorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $corredores = Corredor::all();
 
@@ -67,6 +67,14 @@ class CorredorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $corredor = Corredor::find($id);
+
+        if (!$corredor) {
+            return response()->json([]);
+        }
+
+        $corredor->delete();
+
+        return response()->json(null, 204);
     }
 }
