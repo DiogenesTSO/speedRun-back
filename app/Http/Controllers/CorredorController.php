@@ -59,12 +59,22 @@ class CorredorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Validar os dados
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'telefone' => 'required|string|max:20',
+            'dataNascimento' => 'required|date',
+            'sexo' => 'required|in:M,F',
+        ]);
+
+        //Encontrar o corredor e atualizar
+        $corredor = Corredor::findOrFail($id);
+        $corredor->update($validatedData);
+
+        return response()->json( $corredor, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $corredor = Corredor::find($id);
