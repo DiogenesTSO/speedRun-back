@@ -25,8 +25,9 @@ class CorredorController extends Controller
     {
         //Corredor::create($request->all());
         $validatedData = $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'nome' => 'required|string',
+            'email' => 'required|string|email',
+            'cpf' => 'required|unique:corredores,cpf|max:11',
             'telefone' => 'required|string|max:20',
             'dataNascimento' => 'required|date',
             'sexo' => 'required|in:M,F',
@@ -61,8 +62,9 @@ class CorredorController extends Controller
     {
         //Validar os dados
         $validatedData = $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'nome' => 'required|string',
+            'email' => 'required|string|email',
+            'cpf' => 'required|string|unique:corredores,cpf',
             'telefone' => 'required|string|max:20',
             'dataNascimento' => 'required|date',
             'sexo' => 'required|in:M,F',

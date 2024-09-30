@@ -14,6 +14,7 @@ class Corredor extends Model
     protected $fillable = [
         'nome',
         'email',
+        'cpf',
         'telefone',
         'dataNascimento',
         'sexo',
