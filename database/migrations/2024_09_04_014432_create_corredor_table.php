@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('email');
+            $table->string('cpf')->unique();
             $table->string('telefone')->nullable();
             $table->string('dataNascimento');
+            $table->string('tag_uid')->nullable();
             $table->enum('sexo', ['M', 'F']);
             $table->timestamps();
         });
